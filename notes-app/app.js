@@ -3,6 +3,7 @@ const validator = require('validator')
 const chalk = require("chalk")
 const yargs = require("yargs")
 const notes = require('./notes')
+const { demandOption } = require('yargs')
 
 
 
@@ -47,16 +48,23 @@ yargs.command({
 })
 
 yargs.command({
-  command: "list",
-  describe: "list an action",
-  handler() {
-    console.log(`you have entered the following stat`)
+  command: "read",
+  describe: "Read  the notes",
+  builder: {
+    title: {
+      describe: "input of the title to find",
+      demandOption: true,
+      type: "string"
+    }
+  },
+  handler(argv) {
+   notes.getNotes(argv.title)
   }
 })
 
 yargs.command({
-  command: "read",
-  describe: "Reading a note",
+  command: "list",
+  describe: "List all notes",
   handler() {
       notes.listNotes()
 
