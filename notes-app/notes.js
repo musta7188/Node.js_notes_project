@@ -4,6 +4,8 @@ const chalk = require("chalk");
 const getNotes =  (title) => {
   const notes = loadNotes()
  const result =  notes.find(note => note.title === title)
+
+ debugger
 if(result){
   console.log(chalk.bgGreen(result.title))
 } else {

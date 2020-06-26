@@ -12,6 +12,7 @@ const multiplies = (x, y ) => {
 
  arrayNumber.map( n => {
    
+   
   ///it take each number in the array and we multiple that number first for x and then for y
     var r = n * x
     var f = n * y
@@ -47,53 +48,48 @@ console.log(multiplies(3, 5))
 
 
 
-///build an array from 1 to 100
-const array = Array.from(Array(100).keys())
+const arrayNumbers = Array.from(Array(4000000).keys()).slice(1)
 
-const sumArray = []
+const numberArray = []
 
-const finalValue = []
 
-const sumArrayNumbers = (array) => {
+///take an array with the length of 4,000,000 
+const calculateFibonacci = (array) => {
 
-///take each number in the array and sum in to itself + 1 and push it to the sumArray
-  array.map(n => {
-  var sum = n + (n + 1)
-sumArray.push(sum)
+  ///assign current number to the number to be added to the previus one in this case I start by adding 1 to 0   = 1
+  let currentNumber = 1
+  let previousNumber = 0
 
+  ///until the current number is less then the length of the array i will run this loop
+   while(currentNumber < array.length){
+
+  
+    ////the result will be the two number of the variable 
+     let results = currentNumber + previousNumber
+
+     ////I then assign the previous number to the current and the current to the results 
+      previousNumber = currentNumber
+     currentNumber = results
+    
+     ///i check if the result is less then 4,000,000 and if is yes I stored in an array
+     if(results < 4000000) {
+           numberArray.push(results)
+     }
+
+
+   }
+
+
+   ////sum all the number in the array and print the results 
+
+   const sum = numberArray.reduce((a, b) => {
+    return a + b
   })
-
-///take ogg the last number of this array bc we do not want to get the last value of a number which does not sum with another number
-const allFibonacciValue  = sumArray.slice(0, -1)
-
-///summ all the number in the array and return the value 
-const sum = allFibonacciValue.reduce((a, b)=> {
-  return a + b
-})
- 
-
-checkValue(sum, array, allFibonacciValue)
-}
-
-
-///this function takes the sum of the numbers the array and the numbers that formed this array
-///if the value is more then 4,000,000 the final results of the sum get stored in the finalValue variable 
-////if is still not over that value it will increment the original array taking the last number of the array and adding 1 until it gets to the value
-const checkValue  = (value, array, pairNumbers) =>{
- if ( value > 4000000) {
-   finalValue.push(value)
-  } else {
-    array.push(array[array.length -1]+ 1) 
-    sumArrayNumbers(array)
-    console.log(array)
+  console.log(sum)
   }
 
-  console.log(pairNumbers)
-  console.log(finalValue)
-}
 
-
- sumArrayNumbers(array)
+calculateFibonacci(arrayNumbers)
 
 
 
@@ -156,26 +152,18 @@ checkNumber(arrayNumbers);
 
 
 
-
-
-
-///this function takes a number and compare that number with all the number inside the array arrayNumbers checking if the number ca be divided all the numbers and rendere 0
-////in case does not he will call the same function again and pass that number and adding 1 until he find the right number that match and print it out
-////in case it does get to the number it prints that the number found is the right one 
-///i created two array which one store the number that are divisible and one which store the number that are not, if the length of the falsy one is more than 0 means that the number passed is not the right one and
-////it will keep incrementing that number until it found the right match
-////answer is 232792560
-
-
-
 const arrayNumbers = Array.from(Array(21).keys()).slice(1)
 
+////take a number and create two different array false and true one and set a state of true 
+////until the state is true the while loop will keep running 
 const checkArray = (number) => {
   let falseArray = []
   let trueArray = []
   let state = true
   while(state) {
 
+    ////take each number in the array and se the remainder compared to the starting number we have input 
+    ////if the remainder is 0 push it tot he tru otherwise push it to the false 
     arrayNumbers.map(n => {
 
       if(number % n == 0) {
@@ -187,20 +175,21 @@ const checkArray = (number) => {
   
   })
 
+  ///if the false array have value means the number was not the one we looking for and will increase that number and keep running the loop
+  ////if the number match all the criteria  will print the number and set the state to false to stop the loop
 if (falseArray.length > 0){
     console.log(`${number} is not the right number`)
-   number += 10000
+   number += 1
    falseArray = []
    trueArray = []
   } else {
-    return  console.log(` ${number} is the evenly divisible by all of the numbers from 1 to 20`)
-    state = false
+    return  console.log(` ${number} is the evenly divisible by all of the numbers from 1 to 20`), state = false
   }
   }
   
 }
 
-checkArray(1)
+checkArray(232792540)
 
 ////////////////////////////////////// /prints the 10,001st prime number
 
