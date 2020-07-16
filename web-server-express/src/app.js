@@ -2,13 +2,41 @@ const path = require("path");
 const express = require("express");
 
 ///call the public folder and join it to the current directory
+///define path for express configuration 
 const publicFolder = path.join(__dirname, "../public");
-
+const templatePath = path.join(__dirname, "../template")
 const app = express();
 
 
+///setup handlebars engine and views location
+app.set('view engine', 'hbs')
+app.set('views', templatePath)
 
+////set up static directory to serve 
 app.use(express.static(publicFolder));
+
+app.get('', (req, resp) =>{
+  resp.render('index', {
+    title: 'Weather App',
+    name: 'Mustafa'
+  })
+})
+
+app.get('/about', (req, resp) =>{
+  resp.render('about', {
+    title: 'about section',
+    name: "Mustafa"
+    
+  })
+})
+
+
+app.get('/help', (req, resp) => {
+  resp.render('help', {
+    message: "this is the help page",
+    name: "Mustafa Mohamed"
+  })
+})
 
 
 
