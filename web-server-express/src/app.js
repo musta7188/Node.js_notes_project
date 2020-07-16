@@ -1,17 +1,22 @@
 const path = require("path");
 const express = require("express");
+const hbs = require("hbs")
+
+
+const app = express();
 
 ///call the public folder and join it to the current directory
 ///define path for express configuration 
 const publicFolder = path.join(__dirname, "../public");
-const templatePath = path.join(__dirname, "../template")
-const app = express();
+const templatePath = path.join(__dirname, "../template/views")
+const partialPath =  path.join(__dirname, '../template/partials')
+
 
 
 ///setup handlebars engine and views location
 app.set('view engine', 'hbs')
 app.set('views', templatePath)
-
+hbs.registerPartials(partialPath)
 ////set up static directory to serve 
 app.use(express.static(publicFolder));
 
@@ -34,6 +39,7 @@ app.get('/about', (req, resp) =>{
 app.get('/help', (req, resp) => {
   resp.render('help', {
     message: "this is the help page",
+    title: "help",
     name: "Mustafa Mohamed"
   })
 })
@@ -52,9 +58,20 @@ app.get("/weather", (req, resp) => {
 ///call back function that show the message is optional is optional
 
 
+////handel any route not been set
+app.get('*', (req, resp) => {
+  resp.send(" 404 page does not exist ")
+
+})
+
 
 app.listen(3000, () => {
   console.log("server is up on port 3000");
 });
 
 ////nodemon app.js to run to be able to make changes run the server and see the changes
+
+
+
+//{this command allow you to restart the server even if you modify the extantions file that this file is using }
+// nodemon src/app.js -e js,hbs
