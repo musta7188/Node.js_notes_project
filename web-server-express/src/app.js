@@ -45,6 +45,12 @@ app.get('/help', (req, resp) => {
 })
 
 
+app.get('info', (req, resp) => {
+  resp.render('info',{
+    message: "this is the app weather where you can find last forecast update"
+
+  })
+})
 
 app.get("/weather", (req, resp) => {
   resp.send({
@@ -53,14 +59,27 @@ app.get("/weather", (req, resp) => {
   });
 });
 
+///any route coming after the help one that the clients is looking for will show a different message then that the not existing route one 
+app.get('/help/*', (req, resp) =>{
+  resp.render('404', {
+    title: "404 help ",
+    message: "help not found",
+    name: "Mustafa"
+  })
 
+})
 
 ///call back function that show the message is optional is optional
 
 
 ////handel any route not been set
 app.get('*', (req, resp) => {
-  resp.send(" 404 page does not exist ")
+
+  resp.render('404', {
+    title: "404",
+    message: "page not found",
+    name: "Mustafa"
+  })
 
 })
 
