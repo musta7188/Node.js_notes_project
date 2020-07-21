@@ -1,7 +1,14 @@
-h1 {
-  color: red;
+body {
+  color: #333333;
+  font-family: Arial;
+  max-width: 650px;
+  /*  zero is the margin top and auto spread evenly the space in the page by placing it in the center  */
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
-img {
-  width: 250px;
+
+footer {
+  color: white;
+  background-color: blue;
 }
