@@ -23,15 +23,16 @@ app.use(express.static(publicFolder));
 app.get('', (req, resp) =>{
   resp.render('index', {
     title: 'Weather App',
-    name: 'Mustafa'
+    name: 'Mustafa',
+    titlePage: "Weather"
   })
 })
 
 app.get('/about', (req, resp) =>{
   resp.render('about', {
     title: 'about section',
-    name: "Mustafa"
-    
+    name: "Mustafa",
+    titlePage: "about"
   })
 })
 
@@ -40,7 +41,8 @@ app.get('/help', (req, resp) => {
   resp.render('help', {
     message: "this is the help page",
     title: "help",
-    name: "Mustafa Mohamed"
+    name: "Mustafa Mohamed",
+    titlePage: "help"
   })
 })
 
@@ -56,6 +58,7 @@ app.get("/weather", (req, resp) => {
   resp.send({
     forecast: "it is 23 degree and raining ",
     location: "Philadelphia",
+    titlePage: "Weather"
   });
 });
 
@@ -64,7 +67,8 @@ app.get('/help/*', (req, resp) =>{
   resp.render('404', {
     title: "404 help ",
     message: "help not found",
-    name: "Mustafa"
+    name: "Mustafa",
+    titlePage: "404 error"
   })
 
 })
