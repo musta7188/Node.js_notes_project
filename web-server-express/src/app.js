@@ -62,6 +62,42 @@ app.get("/weather", (req, resp) => {
   });
 });
 
+app.get('/products', (req, resp) => {
+
+  console.log(req.query.search)
+
+  resp.send({
+    products: [],
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ///any route coming after the help one that the clients is looking for will show a different message then that the not existing route one 
 app.get('/help/*', (req, resp) =>{
   resp.render('404', {
