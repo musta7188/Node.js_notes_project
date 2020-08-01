@@ -54,13 +54,29 @@ app.get('info', (req, resp) => {
   })
 })
 
+
+
+
 app.get("/weather", (req, resp) => {
-  resp.send({
+  if(!req.query.address) {
+    resp.send({
+      error: "You must provide an address"
+    })
+  } else {
+    resp.send({
     forecast: "it is 23 degree and raining ",
     location: "Philadelphia",
-    titlePage: "Weather"
+    titlePage: "Weather",
+    address: req.query.address
   });
+  }
+  
 });
+
+
+
+
+
 
 app.get('/products', (req, resp) => {
 
