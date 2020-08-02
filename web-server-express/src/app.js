@@ -75,7 +75,27 @@ app.get('info', (req, resp) => {
 
 
 app.get("/weather", (req, resp) => {
+if(req.query.address) {
+  if (req.query.address == "philadelphia"){
+    return resp.send({
+      forecast: "it is 23 degree and raining ",
+       location: "Philadelphia",
+        titlePage: "Weather",
+    })
 
+  }
+
+  resp.send({
+    error: "city not found "
+  })
+
+} else {
+  resp.send({
+    error: "you must provide and address"
+  })
+}
+
+  
 })
 
 
