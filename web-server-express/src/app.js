@@ -57,21 +57,26 @@ app.get('info', (req, resp) => {
 
 
 
-app.get("/weather", (req, resp) => {
-  if(!req.query.address) {
-    resp.send({
-      error: "You must provide an address"
-    })
-  } else {
-    resp.send({
-    forecast: "it is 23 degree and raining ",
-    location: "Philadelphia",
-    titlePage: "Weather",
-    address: req.query.address
-  });
-  }
+// app.get("/weather", (req, resp) => {
+//   if(!req.query.address) {
+//     resp.send({
+//       error: "You must provide an address"
+//     })
+//   } else {
+//     resp.send({
+//     forecast: "it is 23 degree and raining ",
+//     location: "Philadelphia",
+//     titlePage: "Weather",
+//     address: req.query.address
+//   });
+//   }
   
-});
+// });
+
+
+app.get("/weather", (req, resp) => {
+
+})
 
 
 
@@ -80,13 +85,13 @@ app.get("/weather", (req, resp) => {
 
 app.get('/products', (req, resp) => {
 
-  if (!req.query.search) {
+  if ( req.query.gender == "boy") {
    resp.send({
-      error: "you must provide a search term"
+      products: ["car", "robot"]
     })
-  } else {
+  } if (req.query.gender == "girl"){
     resp.send({
-    products: [],
+    products: ["barbie", "house"],
   })
   }
   
