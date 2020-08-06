@@ -3,27 +3,7 @@ const methods = require("./app");
 const TOKEN =
   "pk.eyJ1IjoibXVzdGE4OCIsImEiOiJja2J4ZzZ6NzUwcGVzMnNsZ2I4N2Jnemo0In0.wTwjwUNRqkMi7xwY9rxHBA";
 
-// const URL = `https://api.mapbox.com/geocoding/v5/mapbox.places/New York.json?access_token=${TOKEN}&limit=1`;
 
-// const getLocationForecast = (location) =>{
-
-// }
-
-// request({ url: URL, json: true }, (error, response) => {
-
-//   if(error){
-//     console.log('enable to connect to IPA')
-//   } else if(response.body.features === 0) {
-//     console.log('unable to find Location')
-//   } else {
-//       const placeName = response.body.features[0].place_name;
-//   const longiTude = response.body.features[0].center[0];
-//   const latiTude = response.body.features[0].center[1];
-
-//   methods.getWeather(latiTude, longiTude)
-//   }
-
-// });
 
 const geocode = (address, callback) => {
   const URL = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(

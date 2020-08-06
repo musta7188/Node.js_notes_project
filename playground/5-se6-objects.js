@@ -32,7 +32,7 @@ const {label: productLabel, price, stock, salePrice = 5} = product
 
 
 ////here we are destructuring the object we passing before to give it tot he function 
-const transaction = (type, {label, stock, price}) => {
+const transaction = (type, {label, stock = 0, price} = {}) => {
 
 }
 ////passing the object 
