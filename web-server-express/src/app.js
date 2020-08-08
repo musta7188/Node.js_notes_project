@@ -65,13 +65,13 @@ app.get("/weather", (req, resp) => {
     });
   }
   moduleGeocode.geocode(req.query.address, (error, { latiTude, longiTude } = {}) => {
-    debugger
+
     if (error) {
       return resp.send({ error });
     }
 
     moduleForecast.forecast(latiTude, longiTude, (error, forecastData) => {
-      debugger
+
       if (error) {
         return resp.send({errorApi: error  });
       }
