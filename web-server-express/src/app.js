@@ -6,6 +6,8 @@ const moduleForecast = require("./utils/5-forecast");
 
 const app = express();
 
+const port = process.env.PORT || 3000
+
 ///call the public folder and join it to the current directory
 ///define path for express configuration
 const publicFolder = path.join(__dirname, "../public");
@@ -49,8 +51,6 @@ app.get("info", (req, resp) => {
     message: "this is the app weather where you can find last forecast update",
   });
 });
-
-
 
 
 
@@ -124,8 +124,8 @@ app.get("*", (req, resp) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("server is up on port 3000");
+app.listen(port, () => {
+  console.log(`server is up on port ${port}`);
 });
 
 ////nodemon app.js to run to be able to make changes run the server and see the changes
