@@ -17,7 +17,8 @@ const forecast = (latitude, longitude, callback) => {
     } else {
       const data = response.body.current;
       const place = response.body.location.name;
-      callback(null, `it is currently ${data.temperature} but feels like ${data.feelslike}.`);
+      debugger
+      callback(null, `it is currently ${data.temperature} but feels like ${data.feelslike} in ${place}.`);
     }
 
   })
