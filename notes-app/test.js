@@ -1,4 +1,31 @@
 
+const chalk = require('chalk')
+
+// console.log(chalk.blue.bgRed.bold('hello world'))
+
+
+const input = process.argv[2]
+
+console.log(process.argv)
+
+
+
+
+
+
+
+
+if(input === 'add' ) {
+  console.log("Note added")
+} if (input === 'remove' ) {
+  console.log("note removed")
+} else {
+  console.log("command not recognised")
+}
+
+
+
+
 
 // const arrayNumbers = Array.from(Array(21).keys()).slice(1)
 
@@ -107,58 +134,58 @@
 
 
 
-return currentSelected === value ? (
-  value === "News" ? (
-    <Link style={{ textDecoration: "none" }} to={`/${value}/^FTSE`}>
-      {" "}
-      <ActiveButton>
-        <strong>{value}</strong>
-      </ActiveButton>
-    </Link>
-  ) : value === "Recommendation" ? <Link style={{ textDecoration: "none" }} to={""}>
-  {" "}
-  <ActiveButton>
-    <strong>{value}</strong>
-  </ActiveButton>
-</Link> 
+// return currentSelected === value ? (
+//   value === "News" ? (
+//     <Link style={{ textDecoration: "none" }} to={`/${value}/^FTSE`}>
+//       {" "}
+//       <ActiveButton>
+//         <strong>{value}</strong>
+//       </ActiveButton>
+//     </Link>
+//   ) : value === "Recommendation" ? <Link style={{ textDecoration: "none" }} to={""}>
+//   {" "}
+//   <ActiveButton>
+//     <strong>{value}</strong>
+//   </ActiveButton>
+// </Link> 
   
-  : (
-    <Link style={{ textDecoration: "none" }} to={`/${value}`}>
-      {" "}
-      <ActiveButton>
-        <strong>{value}</strong>
-      </ActiveButton>
-    </Link>
-  )
-) : ////it check also if the value is equal to new bec news need two value to link the page to the button
-value === "News" ? (
-  <Link
-    to={`/${value}/^FTSE`}
-    style={{ textDecoration: "none" }}
-    onClick={() => setCurrentSelected(value)}
-  >
-    {" "}
-    <ControlButtonElem onClick={handleClose} inputColor={inputColor}>
-      {value}
-    </ControlButtonElem>
-  </Link>
-) :  value === "Recommendation" ? <Link style={{ textDecoration: "none" }} to={""}>
-{" "}
-<ActiveButton>
-  <strong>{value}</strong>
-</ActiveButton>
-</Link> 
-: (
-  ////if the current value is not equal to the value passed the style will be none and link activate for the right page
-  <Link
-    to={`/${value}/`}
-    style={{ textDecoration: "none" }}
-    onClick={() => setCurrentSelected(value)}
-  >
-    {" "}
-    <ControlButtonElem onClick={handleClose} inputColor={inputColor}>
-      {value}
-    </ControlButtonElem>
-  </Link>
-);
-}
+//   : (
+//     <Link style={{ textDecoration: "none" }} to={`/${value}`}>
+//       {" "}
+//       <ActiveButton>
+//         <strong>{value}</strong>
+//       </ActiveButton>
+//     </Link>
+//   )
+// ) : ////it check also if the value is equal to new bec news need two value to link the page to the button
+// value === "News" ? (
+//   <Link
+//     to={`/${value}/^FTSE`}
+//     style={{ textDecoration: "none" }}
+//     onClick={() => setCurrentSelected(value)}
+//   >
+//     {" "}
+//     <ControlButtonElem onClick={handleClose} inputColor={inputColor}>
+//       {value}
+//     </ControlButtonElem>
+//   </Link>
+// ) :  value === "Recommendation" ? <Link style={{ textDecoration: "none" }} to={""}>
+// {" "}
+// <ActiveButton>
+//   <strong>{value}</strong>
+// </ActiveButton>
+// </Link> 
+// : (
+//   ////if the current value is not equal to the value passed the style will be none and link activate for the right page
+//   <Link
+//     to={`/${value}/`}
+//     style={{ textDecoration: "none" }}
+//     onClick={() => setCurrentSelected(value)}
+//   >
+//     {" "}
+//     <ControlButtonElem onClick={handleClose} inputColor={inputColor}>
+//       {value}
+//     </ControlButtonElem>
+//   </Link>
+// );
+// }
