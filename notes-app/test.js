@@ -1,27 +1,77 @@
 
 const chalk = require('chalk')
 
-// console.log(chalk.blue.bgRed.bold('hello world'))
+const yargs = require('yargs')
 
 
-const input = process.argv[2]
-
-console.log(process.argv)
-
+yargs.version('15.4.1')
 
 
 
 
 
+yargs.command({
+  command: "add",
+  description: "Add notes",
+  builder: {
+      title: {
+        describe: "add title ",
+        demandOption: true,
+        type: 'string'
+      },
+      body: {
+        description: 'Note body',
+        demandOption: true,
+        type: 'string'
+      }
+  },
+  handler: function(argv){
+    console.log('title:', argv.title)
+    console.log('body:', argv.body)
+  }
+})
 
 
-if(input === 'add' ) {
-  console.log("Note added")
-} if (input === 'remove' ) {
-  console.log("note removed")
-} else {
-  console.log("command not recognised")
-}
+
+yargs.command({
+  command: "remove",
+  description: "Remove notes",
+  handler: function(){
+    console.log("we are Removing a note ")
+  }
+})
+
+yargs.command({
+  command: "read",
+  description: "Read notes",
+  handler: function(){
+    console.log("we are Reading a note ")
+  }
+})
+
+
+yargs.command({
+  command: "list",
+  description: "Add notes",
+  handler: function(){
+    console.log("we are adding a note ")
+  }
+})
+
+
+
+
+yargs.parse()
+
+
+
+// if(input === 'add' ) {
+//   console.log("Note added")
+// } if (input === 'remove' ) {
+//   console.log("note removed")
+// } else {
+//   console.log("command not recognised")
+// }
 
 
 
