@@ -1,24 +1,22 @@
 const fs = require("fs");
 const chalk = require("chalk");
 
-const getNotes =  (title) => {
-  const notes = loadNotes()
- const result =  notes.find(note => note.title === title)
+const getNotes = (title) => {
+  const notes = loadNotes();
+  const result = notes.find((note) => note.title === title);
 
- debugger
-if(result){
-  console.log(chalk.bgGreen(result.title))
-} else {
-  console.log(chalk.bgRed("title not found"))
-}
- 
+  debugger;
+  if (result) {
+    console.log(chalk.bgGreen(result.title));
+  } else {
+    console.log(chalk.bgRed("title not found"));
+  }
 };
 
-const addNote =  (title, content) => {
+const addNote = (title, content) => {
   const notes = loadNotes();
 
-  const duplicateNote = notes.find( (note) => note.title === title);
-
+  const duplicateNote = notes.find((note) => note.title === title);
 
   if (!duplicateNote) {
     notes.push({
@@ -36,7 +34,7 @@ const saveNotes = (notes) => {
   fs.writeFileSync("notes.json", dataJSON);
 };
 
-const loadNotes =  () => {
+const loadNotes = () => {
   try {
     const dataBuffer = fs.readFileSync("notes.json");
     const dataJSON = dataBuffer.toString();
@@ -46,8 +44,8 @@ const loadNotes =  () => {
   }
 };
 
-/// remove note with the command --remove 
-const deleteNote =  (title) => {
+/// remove note with the command --remove
+const deleteNote = (title) => {
   const notes = loadNotes();
 
   if (checkTitleExists(notes, title)) {
@@ -61,26 +59,24 @@ const deleteNote =  (title) => {
   }
 };
 
-const checkTitleExists =  (obj, title) => {
+const checkTitleExists = (obj, title) => {
   return obj.some((o) => o.title === title) ? true : false;
 };
 
 const listNotes = () => {
+  const notes = loadNotes();
+  const message = chalk.bgGreen("Here is your notes");
 
-  const notes = loadNotes()
-const message = chalk.bgGreen('Here is your notes')
-
-  console.log(message)
-notes.map(note => console.log(note.title))
-}
-
-module.exports = {
-  getNotes: getNotes,
-  addNote: addNote,
-  deleteNote: deleteNote,
-  listNotes: listNotes
+  console.log(message);
+  notes.map((note) => console.log(note.title));
 };
 
+module.exports = {
+  getNotes,
+  addNote,
+  deleteNote,
+  listNotes,
+};
 
 //git remote add origin git@github.com:musta7188/Node_course_notesProjet.git
 //git push -u origin master
